@@ -82,7 +82,7 @@ Prueba exitosa de POST (creando producto)
 
 Prueba de GET (listando productos y por categoría)
 <img width="1600" height="620" alt="image" src="https://github.com/user-attachments/assets/ec965c86-7989-4314-ab2d-cde39e4f8f43" />
-<img width="1600" height="739" alt="image" src="https://github.com/user-attachments/assets/64af2a92-5a00-4884-9c3d-94009ffe9aca" />
+<img width="1600" height="739" alt="image" src="https://github.com/user-attachments/assets/64af2a92-5a00-4884-9e3d-94009ffe9aca" />
 <img width="1600" height="832" alt="image" src="https://github.com/user-attachments/assets/bb06e2c6-102b-4461-9b07-727c1fb75b49" />
 
 Error 404 al buscar producto inexistente
@@ -94,7 +94,6 @@ Error 400 por validación fallida
 
 Consola H2 mostrando los datos persistidos
 <img width="1093" height="501" alt="image" src="https://github.com/user-attachments/assets/222198b8-ee30-4dab-a735-37924a8ed335" />
-
 
 🏗️ Arquitectura del Proyecto
 src/main/java/com/utn/productos/
@@ -120,94 +119,143 @@ src/main/java/com/utn/productos/
 
 ✨ Características Destacadas
 🔒 Validaciones Robustas
+
 Bean Validation (JSR-380) en todos los DTOs
+
 Mensajes de error personalizados y descriptivos
+
 Validación de tipos de datos, rangos y nulos
+
 🛡️ Manejo Centralizado de Errores
+
 @ControllerAdvice para capturar excepciones globalmente
+
 Respuestas de error estandarizadas con timestamp, status, mensaje y ruta
-Diferentes códigos HTTP según el tipo de error (400, 404, 500)
+
+Códigos HTTP correctos según el tipo de error (400, 404, 500)
+
 📊 Persistencia con JPA/Hibernate
+
 Generación automática de esquema DDL
-Mapeo de enums como STRING para legibilidad
+
+Mapeo de enums como STRING para mayor legibilidad
+
 Consultas derivadas con Spring Data JPA (findByCategoria)
+
 📖 Documentación Automática
+
 Swagger UI generado automáticamente
-Anotaciones @Operation, @Schema, @ApiResponses para descripción detallada
-Schemas JSON Schema para request/response
+
+Anotaciones @Operation, @Schema, @ApiResponses
+
+Documentación detallada de request/response
+
 🎯 Arquitectura en Capas
+
 Separación clara de responsabilidades
-Desacoplamiento entre capas mediante interfaces y DTOs
-Facilita testing unitario y mantenibilidad
-<hr></hr>
+
+Desacoplamiento mediante interfaces y DTOs
+
+Facilita testing y mantenibilidad
+
 🧪 Testing Manual Realizado
 Escenarios Probados
+
 ✅ POST - Crear producto con datos válidos (201 Created)
 ✅ POST - Crear producto con validaciones fallidas (400 Bad Request)
 ✅ GET - Listar todos los productos (200 OK)
-✅ GET - Obtener producto existente por ID (200 OK)
+✅ GET - Obtener producto existente (200 OK)
 ✅ GET - Obtener producto inexistente (404 Not Found)
-✅ GET - Filtrar productos por categoría (200 OK)
+✅ GET - Filtrar por categoría (200 OK)
 ✅ PUT - Actualizar producto completo (200 OK)
-✅ PUT - Actualizar producto inexistente (404 Not Found)
-✅ PATCH - Actualizar solo el stock (200 OK)
+✅ PUT - Producto inexistente (404 Not Found)
+✅ PATCH - Actualizar stock (200 OK)
 ✅ PATCH - Stock negativo rechazado (400 Bad Request)
-✅ DELETE - Eliminar producto existente (204 No Content)
-✅ DELETE - Eliminar producto inexistente (404 Not Found)
-✅ H2 Console - Verificación de persistencia de datos
-<hr></hr>
+✅ DELETE - Eliminar producto (204 No Content)
+✅ DELETE - Producto inexistente (404 Not Found)
+✅ H2 Console - Verificación de persistencia
+
 💭 Conclusiones Personales
 Lo Aprendido
-Durante el desarrollo de este proyecto, pude consolidar conocimientos clave sobre:
-1. Diseño de APIs REST:
-Comprendí la importancia de seleccionar correctamente los métodos HTTP según la operación (POST para crear, PUT para actualización completa, PATCH para parcial, DELETE para eliminar)
-Aprendí a utilizar los códigos de estado HTTP de forma semántica (201 Created, 204 No Content, 400 Bad Request, 404 Not Found)
-Entendí el concepto de recursos y cómo estructurar rutas RESTful (/api/productos, /api/productos/{id})
-2. Arquitectura en Capas:
-Implementé el patrón de separación de responsabilidades: Controller (presentación), Service (lógica de negocio), Repository (persistencia)
-Aprendí a desacoplar capas mediante DTOs, evitando exponer entidades directamente en la API
-Comprendí los beneficios de esta arquitectura para testing y mantenibilidad del código
-3. Validaciones y Manejo de Errores:
-Utilicé Bean Validation con anotaciones como @NotNull, @Size, @Min, @DecimalMin
-Implementé un GlobalExceptionHandler con @ControllerAdvice para centralizar el manejo de errores
-Aprendí a crear excepciones personalizadas (ProductoNotFoundException, StockInsuficienteException)
-Diseñé respuestas de error estandarizadas con información útil para debugging
-4. Persistencia con JPA/Hibernate:
-Configuré correctamente Spring Data JPA con H2 en memoria
-Utilicé anotaciones JPA (@Entity, @Id, @GeneratedValue, @Enumerated)
-Aprendí a crear consultas derivadas (findByCategoria) sin escribir SQL
-Comprendí el ciclo de vida de las entidades y cómo Hibernate gestiona las transacciones
-5. Documentación con Swagger:
-Integré Springdoc OpenAPI para generar documentación automática
-Utilicé anotaciones como @Operation, @ApiResponses, @Schema para enriquecer la documentación
-Aprendí el valor de tener una interfaz interactiva para probar endpoints sin necesidad de Postman
+
+Durante el desarrollo de este proyecto, consolidé conocimientos sobre:
+
+Diseño de APIs REST:
+
+Uso correcto de métodos HTTP según la operación
+
+Aplicación semántica de códigos de estado
+
+Estructuración RESTful de rutas
+
+Arquitectura en Capas:
+
+Separación Controller / Service / Repository
+
+Uso de DTOs para desacoplar entidades
+
+Ventajas en testing y mantenibilidad
+
+Validaciones y Manejo de Errores:
+
+Uso de @NotNull, @Size, @Min, @DecimalMin
+
+Centralización de errores con @ControllerAdvice
+
+Excepciones personalizadas (ProductoNotFoundException, etc.)
+
+Persistencia con JPA/Hibernate:
+
+Configuración de H2 y entidades JPA
+
+Uso de @Enumerated(EnumType.STRING)
+
+Consultas derivadas automáticas
+
+Documentación con Swagger:
+
+Generación automática con Springdoc
+
+Uso de anotaciones descriptivas
+
+Interfaz interactiva para testing
+
 Desafíos Superados
-Configuración de Lombok: Inicialmente tuve problemas con la generación de getters/setters, pero configuré correctamente el annotationProcessorPaths en Maven
-Validaciones en PATCH: Entendí la diferencia entre actualización completa (PUT) y parcial (PATCH), y cómo validar solo los campos necesarios
-Enums en JPA: Aprendí a persistir enums como STRING (@Enumerated(EnumType.STRING)) para mejorar la legibilidad en la base de datos
-Manejo de errores personalizado: Diseñé una estructura de ErrorResponse que proporciona información útil sin exponer detalles sensibles
+
+Configuración de Lombok
+
+Validaciones específicas para PATCH
+
+Persistencia de Enums en JPA
+
+Diseño de ErrorResponse estandarizado
+
 Próximos Pasos
-Basándome en esta experiencia, me gustaría explorar:
-Testing Automatizado: Implementar tests unitarios con JUnit/Mockito y tests de integración con MockMvc
-Seguridad: Agregar Spring Security con autenticación JWT
-Paginación: Implementar Pageable en los endpoints de listado
-Base de Datos Persistente: Migrar de H2 en memoria a PostgreSQL/MySQL
-Dockerización: Crear un Dockerfile y docker-compose.yml para facilitar el despliegue
-CI/CD: Configurar pipelines con GitHub Actions o GitLab CI
+
+Implementar Testing automatizado (JUnit/Mockito)
+
+Agregar Seguridad con JWT
+
+Añadir paginación en listados
+
+Migrar a PostgreSQL/MySQL
+
+Dockerizar el proyecto
+
+Configurar CI/CD con GitHub Actions
+
 Reflexión Final
-Este proyecto me permitió entender que desarrollar una API REST profesional va más allá de simplemente crear endpoints. Implica:
-Diseñar una arquitectura escalable y mantenible
-Validar datos de entrada para garantizar integridad
-Manejar errores de forma clara y consistente
-Documentar la API para facilitar su consumo
-Persistir datos de forma eficiente con JPA/Hibernate
-Considero que este proyecto representa un punto de partida sólido para desarrollar aplicaciones backend más complejas con Spring Boot.
-<hr></hr>
+
+Este proyecto me permitió comprender que desarrollar una API REST profesional implica mucho más que crear endpoints:
+✅ Diseñar una arquitectura escalable y mantenible
+✅ Validar datos rigurosamente
+✅ Manejar errores de forma clara
+✅ Documentar correctamente la API
+✅ Persistir datos de manera eficiente
+
 👨‍💻 Autor
-Nombre: [Tu Nombre Completo]
-Legajo: [Tu Número de Legajo]
+Nombre: Ezequiel Abadie
+Legajo: 50737
 Universidad: Universidad Tecnológica Nacional (UTN)
-Carrera: [Tu Carrera]
-Materia: [Nombre de la Materia]
+Materia: Desarrollo de Software
 Año: 2025
-<hr></hr>
